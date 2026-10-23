@@ -2243,38 +2243,6 @@ img {
    FITUR INTERAKTIF: SOUND TOGGLE, LASER OVERLAY, SERTIFIKAT, & MICRO-INTERACTIONS
    ========================================================================== */
 
-/* 1. Header Tools & Sound Toggle Button */
-.header-right-tools {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.sound-toggle-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    border: 1.5px solid var(--border-light);
-    background: #ffffff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    transition: var(--transition);
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
-}
-
-.sound-toggle-btn:hover {
-    border-color: var(--accent-gold);
-    transform: scale(1.08);
-    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2);
-}
-
-.sound-toggle-btn.muted {
-    opacity: 0.55;
-    background: var(--bg-card);
-}
 
 /* 2. Sorot Sudut Geometri (Laser Overlay pada Foto Budaya) */
 .culture-img-box {
