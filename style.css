@@ -1,0 +1,2152 @@
+/* ==========================================================================
+   STYLE.CSS - MENGENAL SUDUT DI SEKITAR KITA (ETNOMATEMATIKA KRATON YOGYAKARTA)
+   Desain Terinspirasi dari Etnomatematika Vercel & Budaya Kraton Yogyakarta
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+:root {
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-card: #f1f5f9;
+    --bg-muted: #e2e8f0;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --primary-color: #1e3a8a;
+    --primary-hover: #172554;
+    --primary-dark: #0f172a;
+    --primary-green: #1e3a8a;
+    --primary-green-hover: #172554;
+    --primary-green-dark: #0f172a;
+    --accent-gold: #d97706;
+    --accent-gold-hover: #b45309;
+    --accent-gold-light: #fef3c7;
+    --gold-foil: linear-gradient(135deg, #d97706 0%, #fbbf24 50%, #b45309 100%);
+    --border-light: #e2e8f0;
+    --border-gold: #f59e0b;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-pill: 9999px;
+    --shadow-subtle: 0 4px 20px rgba(15, 23, 42, 0.06);
+    --shadow-elevated: 0 16px 40px rgba(15, 23, 42, 0.1);
+    --shadow-gold: 0 8px 24px rgba(217, 119, 6, 0.2);
+    --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-page);
+    /* Latar belakang bermotif halus etnomatematika geometris Kawung & Sudut */
+    background-image:
+        radial-gradient(circle at 100% 0%, rgba(197, 137, 51, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 0% 100%, rgba(27, 61, 43, 0.04) 0%, transparent 40%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c58933' fill-opacity='0.035' fill-rule='evenodd'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20S-10 18.954-10 30s8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20zm-20 0c0-5.523-4.477-10-10-10S-10 24.477-10 30s4.477 10 10 10 10-4.477 10-10zm40 0c0 5.523 4.477 10 10 10s10-4.477 10-10-4.477-10-10-10-10 4.477-10 10z'/%3E%3C/g%3E%3C/svg%3E");
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+main {
+    overflow-x: clip;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   HEADER & NAVIGASI
+   ========================================================================== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(251, 249, 244, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 4rem;
+    transition: var(--transition);
+}
+
+.brand {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.brand-crest {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--gold-foil);
+    color: #ffffff;
+    font-size: 1.15rem;
+    box-shadow: 0 4px 12px rgba(197, 137, 51, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.brand span {
+    color: var(--accent-gold);
+    position: relative;
+}
+
+.brand span::after {
+    content: '⚜';
+    position: absolute;
+    top: -8px;
+    right: -14px;
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   ORNAMEN PEMBATAS & WATERMARK SUDUT KRATON
+   ========================================================================== */
+.kraton-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    max-width: 550px;
+    margin: 1.5rem auto 3.5rem auto;
+}
+
+.kraton-divider .divider-line {
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
+}
+
+.kraton-divider .divider-emblem {
+    font-size: 1.15rem;
+    color: var(--accent-gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+.section-heading {
+    position: relative;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 3rem auto;
+}
+
+.heading-angle-watermark {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(197, 137, 51, 0.08);
+    user-select: none;
+    pointer-events: none;
+    letter-spacing: 0.15em;
+    font-family: serif;
+    z-index: 0;
+    white-space: nowrap;
+}
+
+/* Floating Angle Badges di Hero */
+.floating-angles-container {
+    position: absolute;
+    inset: -15px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.floating-angle-badge {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1.5px solid var(--border-gold);
+    color: var(--primary-green);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    font-weight: 800;
+    box-shadow: 0 6px 18px rgba(197, 137, 51, 0.18);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    animation: floatAnim 4s ease-in-out infinite;
+}
+
+.floating-angle-badge .angle-tag-icon {
+    font-size: 1rem;
+    color: var(--accent-gold);
+}
+
+.float-pos-1 {
+    top: -12px;
+    left: -15px;
+    animation-delay: 0s;
+}
+
+.float-pos-2 {
+    bottom: 25px;
+    right: -20px;
+    animation-delay: 1.5s;
+}
+
+.float-pos-3 {
+    top: 42%;
+    left: -20px;
+    animation-delay: 0.8s;
+}
+
+@keyframes floatAnim {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(1.5deg);
+    }
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+nav a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: var(--transition);
+    position: relative;
+    padding: 0.25rem 0;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--primary-green);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gold-foil);
+    border-radius: 2px;
+    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   KOMPONEN GLOBAL (BUTTONS, EYEBROWS, HEADINGS)
+   ========================================================================== */
+.eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 0.85rem;
+    position: relative;
+    z-index: 1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text-main);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    position: relative;
+    z-index: 1;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.85rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: var(--radius-pill);
+    background-color: var(--primary-green);
+    color: #ffffff !important;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(27, 61, 43, 0.2);
+}
+
+.btn:hover {
+    background-color: var(--primary-green-hover);
+    border-color: var(--border-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(27, 61, 43, 0.28);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-green) !important;
+    border: 1.5px solid var(--border-light);
+    box-shadow: none;
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-card);
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+}
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    padding: 0.5rem 0.25rem;
+    transition: var(--transition);
+}
+
+.text-link:hover {
+    color: var(--accent-gold);
+    transform: translateX(4px);
+}
+
+.section {
+    padding: 5rem 4rem;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.section-heading h2 {
+    font-size: 2.45rem;
+    margin-bottom: 0.85rem;
+}
+
+.section-heading p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.95fr;
+    gap: 3.5rem;
+    align-items: center;
+    padding: 4.5rem 4rem 4rem 4rem;
+    max-width: 1240px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.hero-copy h1 {
+    font-size: 3.4rem;
+    line-height: 1.12;
+    margin-bottom: 1.35rem;
+}
+
+.hero-copy h1 em {
+    font-style: normal;
+    color: var(--accent-gold);
+    display: inline-block;
+    position: relative;
+}
+
+.hero-copy p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 2.25rem;
+    max-width: 540px;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.hero-card {
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-gold);
+    border-radius: var(--radius-lg);
+    padding: 0.95rem;
+    box-shadow: 0 16px 45px rgba(27, 61, 43, 0.12);
+    transition: var(--transition);
+    position: relative;
+    overflow: visible;
+}
+
+.hero-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(197, 137, 51, 0.2);
+}
+
+.hero-img-wrap {
+    width: 100%;
+    height: 340px;
+    border-radius: calc(var(--radius-lg) - 6px);
+    overflow: hidden;
+    position: relative;
+    background: #e2ddd3;
+}
+
+.hero-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.hero-card:hover .hero-img-wrap img {
+    transform: scale(1.03);
+}
+
+.image-caption {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.9rem 0.5rem 0.4rem 0.5rem;
+}
+
+.caption-icon {
+    font-size: 1.35rem;
+    color: var(--accent-ochre);
+}
+
+.image-caption strong {
+    display: block;
+    font-size: 0.98rem;
+    color: var(--text-main);
+}
+
+.image-caption p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* ==========================================================================
+   TUJUAN PEMBELAJARAN (FASE C KELAS V)
+   ========================================================================== */
+.objectives-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.objective-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+
+.objective-card:hover {
+    border-color: var(--accent-ochre);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-subtle);
+}
+
+.objective-num {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-ochre);
+    margin-bottom: 0.6rem;
+}
+
+.objective-card p {
+    font-size: 0.92rem;
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   01 / MATERI SUDUT (GRID KARTU & DETAIL MODAL)
+   ========================================================================== */
+.material-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+}
+
+.material-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 2.2rem 1.85rem;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-decoration: none;
+    box-shadow: var(--shadow-subtle);
+}
+
+.material-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-ochre);
+    box-shadow: var(--shadow-elevated);
+}
+
+.shape-badge {
+    width: 62px;
+    height: 62px;
+    border-radius: 16px;
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.65rem;
+    color: var(--accent-ochre);
+    margin-bottom: 1.35rem;
+    border: 1px solid var(--border-light);
+}
+
+.card-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--accent-ochre);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+}
+
+.material-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.65rem;
+    color: var(--text-main);
+}
+
+.material-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.card-action {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: var(--transition);
+}
+
+.material-card:hover .card-action {
+    color: var(--accent-ochre);
+    transform: translateX(4px);
+}
+
+/* Material Detail Box */
+.material-detail-container {
+    margin-top: 3rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 2.75rem;
+    box-shadow: var(--shadow-elevated);
+    display: none;
+}
+
+.material-detail-container.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+}
+
+.material-tabs {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 1rem;
+    overflow-x: auto;
+}
+
+.tab-btn {
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--radius-pill);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+    background: var(--primary-green);
+    color: #ffffff;
+    border-color: var(--primary-green);
+}
+
+.preset-angle-btn {
+    padding: 0.65rem 1.25rem;
+    border-radius: var(--radius-pill);
+    background: #ffffff;
+    border: 1.5px solid var(--border-gold);
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.preset-angle-btn:hover {
+    background: var(--primary-color);
+    color: #ffffff !important;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(30, 58, 138, 0.25);
+}
+
+.materi-pane {
+    display: none;
+}
+
+.materi-pane.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.angle-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.angle-type-item {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 1.35rem;
+    border: 1px solid var(--border-light);
+}
+
+.angle-type-item h4 {
+    font-size: 1.15rem;
+    color: var(--primary-green);
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.angle-degrees-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: var(--accent-ochre-light);
+    color: var(--accent-ochre);
+    font-size: 0.78rem;
+    font-weight: 800;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   02 / JELAJAH BUDAYA (ETNOMATEMATIKA KRATON)
+   ========================================================================== */
+.culture-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.culture-card {
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-gold);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.culture-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-gold);
+    border-color: #b57a26;
+}
+
+/* Ornamen Pojok Ukiran Keraton */
+.kraton-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.85;
+}
+
+.kraton-corner-tl {
+    top: 8px;
+    left: 8px;
+    border-top: 2.5px solid var(--accent-gold);
+    border-left: 2.5px solid var(--accent-gold);
+    border-top-left-radius: 6px;
+}
+
+.kraton-corner-tr {
+    top: 8px;
+    right: 8px;
+    border-top: 2.5px solid var(--accent-gold);
+    border-right: 2.5px solid var(--accent-gold);
+    border-top-right-radius: 6px;
+}
+
+.kraton-corner-bl {
+    bottom: 8px;
+    left: 8px;
+    border-bottom: 2.5px solid var(--accent-gold);
+    border-left: 2.5px solid var(--accent-gold);
+    border-bottom-left-radius: 6px;
+}
+
+.kraton-corner-br {
+    bottom: 8px;
+    right: 8px;
+    border-bottom: 2.5px solid var(--accent-gold);
+    border-right: 2.5px solid var(--accent-gold);
+    border-bottom-right-radius: 6px;
+}
+
+.culture-img-box {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    background: #1e1e1e;
+    overflow: hidden;
+    border-bottom: 1.5px solid var(--border-gold);
+}
+
+.culture-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.culture-card:hover .culture-img-box img {
+    transform: scale(1.04);
+}
+
+.culture-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(20, 42, 30, 0.92);
+    color: #ffd992;
+    border: 1px solid var(--border-gold);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-pill);
+    backdrop-filter: blur(8px);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.culture-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.culture-body h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+}
+
+.angle-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.meta-pill {
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-pill);
+    background: var(--bg-card);
+    color: var(--text-muted);
+}
+
+.meta-pill.highlight {
+    background: var(--accent-ochre-light);
+    color: var(--accent-ochre);
+}
+
+.culture-desc {
+    font-size: 0.93rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+}
+
+.cultural-note {
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent-ochre);
+    padding: 0.75rem 1rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    font-style: italic;
+}
+
+/* ==========================================================================
+   03 / AKTIVITAS INTERAKTIF & DETEKTIF SUDUT
+   ========================================================================== */
+.interactive-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.game-card,
+.protractor-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.score-badge {
+    background: var(--accent-ochre-light);
+    color: var(--accent-ochre);
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-pill);
+}
+
+.game-quiz-screen {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-img-preview {
+    width: 100%;
+    height: 240px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    background: #111;
+    border: 1px solid var(--border-light);
+}
+
+.game-img-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.game-options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.game-opt-btn {
+    padding: 0.85rem 1.25rem;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-light);
+    border-radius: var(--radius-md);
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text-main);
+    cursor: pointer;
+    text-align: left;
+    transition: var(--transition);
+}
+
+.game-opt-btn:hover {
+    background: var(--accent-ochre-light);
+    border-color: var(--accent-ochre);
+    color: var(--accent-ochre);
+    transform: translateX(4px);
+}
+
+.game-feedback {
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.game-feedback.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    display: block;
+}
+
+.game-feedback.wrong {
+    background: #ffebee;
+    color: #c62828;
+    display: block;
+}
+
+/* Busur Derajat Simulator */
+.protractor-canvas-wrap {
+    width: 100%;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    margin-bottom: 1.25rem;
+}
+
+#protractorSvg {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.06));
+}
+
+.slider-control {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.slider-control input[type="range"] {
+    flex-grow: 1;
+    accent-color: var(--accent-ochre);
+    height: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.slider-angle-readout {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary-green);
+    min-width: 60px;
+    text-align: right;
+}
+
+/* ==========================================================================
+   04 / LATIHAN & EVALUASI (PERSIS REFERENSI SCREENSHOT 2)
+   ========================================================================== */
+.quiz-section {
+    background: transparent;
+}
+
+.quiz-form {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.student-info-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 2.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-subtle);
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.45rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-ochre);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(182, 109, 40, 0.15);
+}
+
+.question-card,
+.question {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem 2.5rem;
+    box-shadow: var(--shadow-subtle);
+    margin-bottom: 0;
+    transition: var(--transition);
+}
+
+.question-card:hover {
+    border-color: #dcd4c7;
+    box-shadow: var(--shadow-elevated);
+}
+
+.question-header {
+    margin-bottom: 1.5rem;
+}
+
+.question-number {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--accent-ochre);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.question-title {
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.option {
+    flex: 1 1 calc(33.333% - 1rem);
+    min-width: 180px;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+}
+
+.option:hover {
+    border-color: var(--accent-ochre);
+    background: var(--bg-card);
+}
+
+.option input[type="radio"] {
+    accent-color: var(--accent-ochre);
+    width: 1.15rem;
+    height: 1.15rem;
+    cursor: pointer;
+}
+
+.option input[type="radio"]:checked+span {
+    font-weight: 700;
+    color: var(--primary-green);
+}
+
+.option span {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.reflection-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem 2.5rem;
+    box-shadow: var(--shadow-subtle);
+}
+
+.reflection-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.reflection-box p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1.15rem 2rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* Hasil Evaluasi Card */
+.result-card {
+    background: var(--bg-surface);
+    border: 2px solid var(--accent-ochre);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow-elevated);
+    text-align: center;
+}
+
+.score-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--accent-ochre-light);
+    color: var(--accent-ochre);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    font-size: 2.4rem;
+    font-weight: 800;
+    border: 3px solid var(--accent-ochre);
+}
+
+.score-circle span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.result-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+}
+
+.result-card p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.review-answers-box {
+    text-align: left;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-light);
+    padding-top: 2rem;
+}
+
+.review-item {
+    background: var(--bg-card);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--primary-green);
+}
+
+.review-item.wrong {
+    border-left-color: #c62828;
+}
+
+/* ==========================================================================
+   05 / TENTANG (PERSIS REFERENSI SCREENSHOT 3)
+   ========================================================================== */
+.about {
+    max-width: 1240px;
+    margin: 0 auto 4rem auto;
+    padding: 0 4rem;
+}
+
+.about-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border: 1.5px solid var(--border-gold);
+    color: #ffffff;
+    border-radius: var(--radius-lg);
+    padding: 4.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 3.5rem;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.about-card .eyebrow {
+    color: #fbbf24;
+}
+
+.about-card h2 {
+    font-size: 2.5rem;
+    line-height: 1.18;
+    color: #ffffff;
+}
+
+.about-card p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #cbd5e1;
+}
+
+/* ==========================================================================
+   FOOTER (ROYAL MIDNIGHT & GOLD)
+   ========================================================================== */
+footer {
+    background-color: #0b0f19;
+    color: #94a3b8;
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1.5px solid rgba(217, 119, 6, 0.25);
+}
+
+.footer-brand {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.footer-brand span {
+    color: #fbbf24;
+}
+
+footer a.back-to-top {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #fbbf24;
+    transition: var(--transition);
+}
+
+footer a.back-to-top:hover {
+    color: #ffffff;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: #8c9e92;
+}
+
+footer a.back-to-top {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #e5b98a;
+    transition: var(--transition);
+}
+
+footer a.back-to-top:hover {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   ANIMASI & RESPONSIVE
+   ========================================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Tablet Landscape & Small Desktop (≤ 1024px) ---------- */
+@media (max-width: 1024px) {
+
+    header,
+    .hero,
+    .section,
+    .about,
+    footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .hero-copy h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-img-wrap {
+        height: 300px;
+    }
+
+    .material-grid,
+    .culture-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .objectives-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .interactive-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 3rem 2rem;
+    }
+
+    .about-card h2 {
+        font-size: 2rem;
+    }
+
+    /* Batik Parang card – undo inline grid for tablet */
+    .batik-parang-card {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Material detail container padding */
+    .material-detail-container {
+        padding: 2rem;
+    }
+
+    .section-heading h2 {
+        font-size: 2rem;
+    }
+
+    .heading-angle-watermark {
+        font-size: 3.5rem;
+    }
+}
+
+/* ---------- Tablet Portrait & Large Phone (≤ 768px) ---------- */
+@media (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+
+    header {
+        padding: 0.85rem 1.25rem;
+    }
+
+    .brand {
+        font-size: 1.15rem;
+    }
+
+    .brand-crest {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(251, 249, 244, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid var(--border-light);
+        gap: 0.65rem;
+        box-shadow: var(--shadow-elevated);
+        z-index: 99;
+    }
+
+    nav.open {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 1rem;
+        padding: 0.6rem 0;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 3rem 1.5rem 2.5rem 1.5rem;
+    }
+
+    .hero-copy h1 {
+        font-size: 2.1rem;
+    }
+
+    .hero-copy p {
+        font-size: 1rem;
+    }
+
+    .hero-img-wrap {
+        height: 260px;
+    }
+
+    .hero-card {
+        padding: 0.75rem;
+    }
+
+    /* Floating angle badges – reposition for mobile */
+    .floating-angle-badge {
+        font-size: 0.72rem;
+        padding: 0.3rem 0.65rem;
+    }
+
+    .float-pos-1 {
+        top: -8px;
+        left: -5px;
+    }
+
+    .float-pos-2 {
+        bottom: 60px;
+        right: -5px;
+    }
+
+    .float-pos-3 {
+        top: 38%;
+        left: -8px;
+    }
+
+    /* Sections */
+    .section {
+        padding: 3rem 1.5rem;
+    }
+
+    .section-heading h2 {
+        font-size: 1.75rem;
+    }
+
+    .section-heading p {
+        font-size: 0.95rem;
+    }
+
+    .heading-angle-watermark {
+        font-size: 2.8rem;
+        top: -16px;
+    }
+
+    .kraton-divider {
+        margin: 1rem auto 2.5rem auto;
+        gap: 0.75rem;
+    }
+
+    .kraton-divider .divider-emblem {
+        font-size: 0.95rem;
+    }
+
+    /* Grids → single column */
+    .material-grid,
+    .culture-grid,
+    .objectives-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Material cards */
+    .material-card {
+        padding: 1.75rem 1.5rem;
+    }
+
+    .material-card h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Material detail */
+    .material-detail-container {
+        padding: 1.5rem;
+    }
+
+    .material-tabs {
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-btn {
+        padding: 0.55rem 1rem;
+        font-size: 0.82rem;
+    }
+
+    /* Culture cards */
+    .culture-img-box {
+        height: 240px;
+    }
+
+    .culture-body {
+        padding: 1.35rem;
+    }
+
+    .culture-body h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Batik Parang card – single column on mobile */
+    .batik-parang-card {
+        grid-template-columns: 1fr !important;
+        padding: 1.5rem !important;
+        gap: 1.25rem !important;
+    }
+
+    .batik-parang-card > div[style*="height: 200px"] {
+        height: 180px !important;
+    }
+
+    /* Interaktif cards */
+    .protractor-card,
+    .game-card {
+        padding: 1.5rem;
+    }
+
+    .game-header {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .game-img-preview {
+        height: 200px;
+    }
+
+    /* Preset buttons wrap */
+    .protractor-card > div[style*="display: flex"] {
+        justify-content: center;
+    }
+
+    .preset-angle-btn {
+        padding: 0.55rem 1rem;
+        font-size: 0.82rem;
+    }
+
+    /* Quiz / Evaluasi */
+    .option {
+        flex: 1 1 100%;
+    }
+
+    .student-info-box {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+
+    .question-card {
+        padding: 1.5rem;
+    }
+
+    .question-title {
+        font-size: 1.05rem;
+    }
+
+    .reflection-box {
+        padding: 1.5rem;
+    }
+
+    /* Result card */
+    .result-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .result-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .score-circle {
+        width: 100px;
+        height: 100px;
+        font-size: 2rem;
+    }
+
+    /* About */
+    .about {
+        padding: 0 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .about-card {
+        padding: 2.5rem 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .about-card h2 {
+        font-size: 1.7rem;
+    }
+
+    .about-card p {
+        font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+        flex-direction: column;
+        gap: 1.25rem;
+        text-align: center;
+        padding: 2rem 1.5rem;
+    }
+
+    .footer-brand {
+        font-size: 1.1rem;
+    }
+}
+
+/* ---------- Phone (≤ 480px) ---------- */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 0.75rem 1rem;
+    }
+
+    .brand {
+        font-size: 1.05rem;
+        gap: 0.45rem;
+    }
+
+    .brand-crest {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+
+    .brand span::after {
+        display: none;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 2.5rem 1rem 2rem 1rem;
+        gap: 2rem;
+    }
+
+    .hero-copy h1 {
+        font-size: 1.75rem;
+        line-height: 1.18;
+    }
+
+    .hero-copy p {
+        font-size: 0.92rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+        gap: 0.75rem;
+    }
+
+    .hero-actions .btn {
+        padding: 0.7rem 1.35rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-actions .text-link {
+        font-size: 0.9rem;
+    }
+
+    .hero-img-wrap {
+        height: 200px;
+    }
+
+    /* Floating angle badges – smaller + better position */
+    .floating-angle-badge {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.55rem;
+        gap: 0.3rem;
+    }
+
+    .floating-angle-badge .angle-tag-icon {
+        font-size: 0.8rem;
+    }
+
+    .float-pos-1 {
+        top: -6px;
+        left: 2px;
+    }
+
+    .float-pos-2 {
+        bottom: 50px;
+        right: 2px;
+    }
+
+    .float-pos-3 {
+        top: 35%;
+        left: -4px;
+    }
+
+    /* Section */
+    .section {
+        padding: 2.25rem 1rem;
+    }
+
+    .section-heading {
+        margin-bottom: 2rem;
+    }
+
+    .section-heading h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-heading p {
+        font-size: 0.88rem;
+    }
+
+    .heading-angle-watermark {
+        font-size: 2.2rem;
+        top: -12px;
+    }
+
+    .kraton-divider {
+        margin: 0.75rem auto 2rem auto;
+        max-width: 90%;
+    }
+
+    .kraton-divider .divider-emblem {
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+    }
+
+    .eyebrow {
+        font-size: 0.72rem;
+    }
+
+    /* Objectives */
+    .objective-card {
+        padding: 1.25rem;
+    }
+
+    .objective-num {
+        font-size: 1.3rem;
+    }
+
+    .objective-card p {
+        font-size: 0.88rem;
+    }
+
+    /* Material */
+    .material-card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .material-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .material-card p {
+        font-size: 0.88rem;
+    }
+
+    .shape-badge {
+        width: 50px;
+        height: 50px;
+        font-size: 1.35rem;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+    }
+
+    .material-detail-container {
+        padding: 1.25rem;
+        margin-top: 2rem;
+    }
+
+    .material-tabs {
+        gap: 0.4rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .tab-btn {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.78rem;
+    }
+
+    .angle-types-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+
+    .angle-type-item {
+        padding: 1rem;
+    }
+
+    /* Culture */
+    .culture-grid {
+        gap: 1.5rem;
+    }
+
+    .culture-img-box {
+        height: 200px;
+    }
+
+    .culture-body {
+        padding: 1.15rem;
+    }
+
+    .culture-body h3 {
+        font-size: 1.1rem;
+    }
+
+    .culture-desc {
+        font-size: 0.88rem;
+    }
+
+    .cultural-note {
+        font-size: 0.82rem;
+        padding: 0.6rem 0.85rem;
+    }
+
+    .meta-pill {
+        font-size: 0.72rem;
+        padding: 0.2rem 0.55rem;
+    }
+
+    .culture-badge {
+        font-size: 0.68rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    /* Batik Parang card */
+    .batik-parang-card {
+        padding: 1.25rem !important;
+        margin-top: 1.5rem !important;
+    }
+
+    .batik-parang-card > div[style*="height: 200px"] {
+        height: 160px !important;
+    }
+
+    /* Interactive / Game */
+    .protractor-card,
+    .game-card {
+        padding: 1.25rem;
+    }
+
+    .game-header h3 {
+        font-size: 1.15rem !important;
+    }
+
+    .game-img-preview {
+        height: 180px;
+    }
+
+    .game-opt-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .game-feedback {
+        font-size: 0.85rem;
+        padding: 0.75rem 0.85rem;
+    }
+
+    .protractor-canvas-wrap {
+        padding: 1rem;
+    }
+
+    .slider-angle-readout {
+        font-size: 1.1rem;
+        min-width: 50px;
+    }
+
+    .preset-angle-btn {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.78rem;
+    }
+
+    /* Quiz */
+    .quiz-form {
+        gap: 1.5rem;
+    }
+
+    .student-info-box {
+        padding: 1.25rem;
+    }
+
+    .question-card {
+        padding: 1.25rem;
+    }
+
+    .question-number {
+        font-size: 0.7rem;
+    }
+
+    .question-title {
+        font-size: 1rem;
+        line-height: 1.45;
+    }
+
+    .option {
+        padding: 0.85rem 1rem;
+        gap: 0.65rem;
+    }
+
+    .option span {
+        font-size: 0.88rem;
+    }
+
+    .reflection-box {
+        padding: 1.25rem;
+    }
+
+    .reflection-box h3 {
+        font-size: 1.05rem;
+    }
+
+    .submit-btn {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    /* Result */
+    .result-card {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .result-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .result-card p {
+        font-size: 0.92rem;
+    }
+
+    .score-circle {
+        width: 90px;
+        height: 90px;
+        font-size: 1.75rem;
+    }
+
+    .score-circle span {
+        font-size: 0.7rem;
+    }
+
+    .review-item {
+        padding: 1rem;
+        font-size: 0.88rem;
+    }
+
+    /* About */
+    .about {
+        padding: 0 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .about-card {
+        padding: 2rem 1.25rem;
+        gap: 1.25rem;
+    }
+
+    .about-card h2 {
+        font-size: 1.45rem;
+    }
+
+    .about-card p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+        padding: 1.75rem 1rem;
+        gap: 1rem;
+    }
+
+    .footer-brand {
+        font-size: 1rem;
+    }
+
+    footer p {
+        font-size: 0.82rem;
+    }
+
+    footer a.back-to-top {
+        font-size: 0.85rem;
+    }
+}
+
+/* ---------- Very Small Phone (≤ 360px) ---------- */
+@media (max-width: 360px) {
+    html {
+        font-size: 13px;
+    }
+
+    .hero-copy h1 {
+        font-size: 1.55rem;
+    }
+
+    .hero-img-wrap {
+        height: 170px;
+    }
+
+    .section-heading h2 {
+        font-size: 1.35rem;
+    }
+
+    .heading-angle-watermark {
+        font-size: 1.8rem;
+    }
+
+    .floating-angle-badge {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.45rem;
+    }
+
+    .material-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .about-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .about-card {
+        padding: 1.75rem 1rem;
+    }
+
+    .game-img-preview {
+        height: 150px;
+    }
+
+    .culture-img-box {
+        height: 170px;
+    }
+}
+
+/* ---------- Landscape phone fix ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .hero-img-wrap {
+        height: 180px;
+    }
+
+    .section {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+}
+
+/* ---------- Touch device hover fix ---------- */
+@media (hover: none) {
+
+    .material-card:hover,
+    .culture-card:hover,
+    .hero-card:hover,
+    .objective-card:hover {
+        transform: none;
+    }
+}
+
+/* ---------- Smooth image loading ---------- */
+img {
+    max-width: 100%;
+    height: auto;
+}
