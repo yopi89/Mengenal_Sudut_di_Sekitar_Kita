@@ -123,8 +123,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quiz'])) {
             <p>Eksplorasi konsep sudut (bagian, jenis, dan pengukuran sudut) melalui keindahan seni ukir, arsitektur megah, dan ornamen budaya Kraton Yogyakarta.</p>
             <div class="hero-actions">
                 <a class="btn" href="#materi">Mulai Belajar <span aria-hidden="true">→</span></a>
-                <a class="btn btn-secondary" href="#budaya">Jelajah Budaya</a>
-                <a class="text-link" href="#evaluasi">Coba latihan</a>
+                <a class="btn btn-secondary" href="#budaya">⚜ Jelajah Budaya</a>
+                <a class="btn btn-secondary" href="#evaluasi">✍️ Latihan Soal</a>
             </div>
         </div>
         <div class="hero-card">
