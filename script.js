@@ -495,5 +495,216 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // =========================================================================
+    // 6. MUSIK GAMELAN TRADISIONAL KRATON (AUDIO FILE + WEB AUDIO SYNTHESIZER)
+    // =========================================================================
+    const gamelanPlayer = document.getElementById('gamelanPlayer');
+    const gamelanPlayBtn = document.getElementById('gamelanPlayBtn');
+    const gamelanPlayState = document.getElementById('gamelanPlayState');
+    const bgMusicAudio = document.getElementById('bgMusicAudio');
+
+    let isGamelanPlaying = false;
+    let gamelanInterval = null;
+    let gamelanCtx = null;
+    let usingSynth = false;
+
+    // Frekuensi Nada Gamelan Jawa Laras Slendro (Hz)
+    // 1 (Ji): 261.6Hz, 2 (Ro): 293.7Hz, 3 (Lu): 329.6Hz, 5 (Ma): 392Hz, 6 (Nem): 440Hz
+    const slendroNotes = {
+        1: 261.63,
+        2: 293.66,
+        3: 329.63,
+        5: 392.00,
+        6: 440.00,
+        '1_high': 523.25,
+        '2_high': 587.33,
+        '3_high': 659.25,
+        'gong': 65.41 // C2 Sub-bass Gong Ageng
+    };
+
+    // Pola Melodi Gending Lancaran Kraton (16 Ketukan)
+    const gendingPattern = [
+        { note: 1, kenong: true, kempul: false, gong: false },
+        { note: 2, kenong: false, kempul: false, gong: false },
+        { note: 3, kenong: false, kempul: false, gong: false },
+        { note: 5, kenong: false, kempul: true, gong: false },
+        { note: 6, kenong: false, kempul: false, gong: false },
+        { note: 3, kenong: false, kempul: false, gong: false },
+        { note: 2, kenong: false, kempul: false, gong: false },
+        { note: 1, kenong: true, kempul: false, gong: false },
+        { note: 2, kenong: false, kempul: false, gong: false },
+        { note: 3, kenong: false, kempul: false, gong: false },
+        { note: 5, kenong: false, kempul: true, gong: false },
+        { note: 6, kenong: false, kempul: false, gong: false },
+        { note: 5, kenong: false, kempul: false, gong: false },
+        { note: 3, kenong: false, kempul: false, gong: false },
+        { note: 2, kenong: false, kempul: false, gong: false },
+        { note: 1, kenong: true, kempul: false, gong: true } // Dentuman Gong Ageng penutup siklus
+    ];
+
+    let currentBeat = 0;
+
+    function initGamelanCtx() {
+        if (!gamelanCtx && (window.AudioContext || window.webkitAudioContext)) {
+            gamelanCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (gamelanCtx && gamelanCtx.state === 'suspended') {
+            gamelanCtx.resume();
+        }
+    }
+
+    // Membunyikan bilah perunggu gamelan (metallophone bronze strike)
+    function strikeGamelan(freq, duration = 1.8, volume = 0.12) {
+        if (!gamelanCtx) return;
+        const now = gamelanCtx.currentTime;
+
+        // Nada dasar perunggu
+        const osc = gamelanCtx.createOscillator();
+        const gain = gamelanCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+
+        // Harmonik logam (ring modulasi lembut)
+        const overtone = gamelanCtx.createOscillator();
+        const overtoneGain = gamelanCtx.createGain();
+        overtone.type = 'triangle';
+        overtone.frequency.setValueAtTime(freq * 2.76, now); // Frekuensi resonansi logam
+
+        gain.gain.setValueAtTime(volume, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+        overtoneGain.gain.setValueAtTime(volume * 0.4, now);
+        overtoneGain.gain.exponentialRampToValueAtTime(0.001, now + (duration * 0.6));
+
+        osc.connect(gain);
+        gain.connect(gamelanCtx.destination);
+
+        overtone.connect(overtoneGain);
+        overtoneGain.connect(gamelanCtx.destination);
+
+        osc.start(now);
+        overtone.start(now);
+        osc.stop(now + duration);
+        overtone.stop(now + duration);
+    }
+
+    // Dentuman Gong Ageng Kraton yang megah dan bergetar lama
+    function strikeGong() {
+        if (!gamelanCtx) return;
+        const now = gamelanCtx.currentTime;
+        const osc = gamelanCtx.createOscillator();
+        const gain = gamelanCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(65.41, now);
+        osc.frequency.exponentialRampToValueAtTime(58.0, now + 3.5); // Penurunan resonansi gong
+
+        gain.gain.setValueAtTime(0.35, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 4.5);
+
+        osc.connect(gain);
+        gain.connect(gamelanCtx.destination);
+
+        osc.start(now);
+        osc.stop(now + 4.5);
+    }
+
+    function playNextBeat() {
+        if (!isGamelanPlaying) return;
+        const step = gendingPattern[currentBeat];
+
+        // Saron / Bonang melody
+        const freq = slendroNotes[step.note] || 329.63;
+        strikeGamelan(freq, 1.4, 0.12);
+
+        // Kenong
+        if (step.kenong) {
+            strikeGamelan(freq * 0.5, 2.5, 0.16);
+        }
+
+        // Kempul
+        if (step.kempul) {
+            strikeGamelan(slendroNotes[5] * 0.75, 2.0, 0.14);
+        }
+
+        // Gong Ageng penutup siklus gending
+        if (step.gong) {
+            strikeGong();
+        }
+
+        currentBeat = (currentBeat + 1) % gendingPattern.length;
+    }
+
+    function startGamelanSynth() {
+        initGamelanCtx();
+        usingSynth = true;
+        currentBeat = 0;
+        playNextBeat();
+        gamelanInterval = setInterval(playNextBeat, 650); // Tempo tenang 92 BPM
+    }
+
+    function stopGamelanSynth() {
+        if (gamelanInterval) {
+            clearInterval(gamelanInterval);
+            gamelanInterval = null;
+        }
+        usingSynth = false;
+    }
+
+    function toggleGamelanMusic() {
+        if (!isGamelanPlaying) {
+            // Coba putar file audio jika tersedia
+            if (bgMusicAudio) {
+                bgMusicAudio.volume = 0.5;
+                const playPromise = bgMusicAudio.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // File audio berhasil diputar
+                        isGamelanPlaying = true;
+                        updatePlayerUI(true);
+                    }).catch(() => {
+                        // Jika file belum diisi atau autoplay dicegah, gunakan synth bawaan otomatis!
+                        isGamelanPlaying = true;
+                        startGamelanSynth();
+                        updatePlayerUI(true);
+                    });
+                } else {
+                    isGamelanPlaying = true;
+                    startGamelanSynth();
+                    updatePlayerUI(true);
+                }
+            } else {
+                isGamelanPlaying = true;
+                startGamelanSynth();
+                updatePlayerUI(true);
+            }
+        } else {
+            // Berhenti memutar
+            isGamelanPlaying = false;
+            if (bgMusicAudio) bgMusicAudio.pause();
+            stopGamelanSynth();
+            updatePlayerUI(false);
+        }
+    }
+
+    function updatePlayerUI(playing) {
+        if (!gamelanPlayer || !gamelanPlayState) return;
+        if (playing) {
+            gamelanPlayer.classList.add('playing');
+            gamelanPlayState.textContent = '⏸';
+            gamelanPlayer.setAttribute('title', 'Alunan Gamelan Kraton sedang berputar (Klik untuk jeda)');
+        } else {
+            gamelanPlayer.classList.remove('playing');
+            gamelanPlayState.textContent = '▶';
+            gamelanPlayer.setAttribute('title', 'Klik untuk memutar alunan musik Gamelan Kraton');
+        }
+    }
+
+    if (gamelanPlayBtn) {
+        gamelanPlayBtn.addEventListener('click', toggleGamelanMusic);
+    }
 });
+
 

@@ -755,6 +755,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quiz'])) {
     </section>
 </main>
 
+<!-- Floating Traditional Kraton Music Player -->
+<div id="gamelanPlayer" class="gamelan-music-player" title="Klik untuk memutar / menjeda alunan musik Gamelan Kraton">
+    <button type="button" id="gamelanPlayBtn" class="gamelan-play-btn" aria-label="Putar Musik Gamelan Kraton">
+        <span class="gamelan-icon">🎵</span>
+        <span class="player-text">Musik Gamelan Kraton</span>
+        <span class="play-state-icon" id="gamelanPlayState">▶</span>
+    </button>
+    <div class="sound-wave-bars" id="gamelanWaves">
+        <span></span><span></span><span></span><span></span>
+    </div>
+    <audio id="bgMusicAudio" src="assets/audio/gamelan.mp3" preload="none" loop></audio>
+</div>
+
 <!-- ==================== FOOTER (PERSIS SCREENSHOT 3) ==================== -->
 <footer>
     <a class="footer-brand" href="#beranda">
