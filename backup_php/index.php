@@ -359,7 +359,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quiz'])) {
                         ← 3. Cara Mengukur Sudut
                     </button>
                     <a href="#budaya" class="btn-nav-next cta-highlight">
-                        Lanjut ke Jelajah Budaya Kraton ⚜ →
+                        <span>Lanjut ke Jelajah Budaya Kraton ⚜ →</span>
                     </a>
                 </div>
             </div>
