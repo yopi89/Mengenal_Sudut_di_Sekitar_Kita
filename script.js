@@ -324,4 +324,170 @@ document.addEventListener('DOMContentLoaded', () => {
     if (detectiveTitle) {
         renderDetectiveRound();
     }
+
+    // 5. Evaluasi Pembelajaran (Client-side / Statis)
+    const evaluasiQuestions = [
+        {
+            id: 0,
+            question: 'Titik pertemuan antara dua garis lurus yang membentuk sebuah sudut dinamakan...',
+            options: ['Kaki sudut', 'Titik sudut', 'Derajat sudut'],
+            correct: 1,
+            explanation: 'Titik sudut adalah titik pangkal persekutuan tempat bertemunya dua garis lurus (kaki sudut).'
+        },
+        {
+            id: 1,
+            question: 'Sudut yang besarnya lebih kecil dari 90° (antara 0° sampai 90°) disebut sudut...',
+            options: ['Sudut lancip', 'Sudut siku-siku', 'Sudut tumpul'],
+            correct: 0,
+            explanation: 'Sudut lancip berukuran lebih dari 0° dan kurang dari 90°.'
+        },
+        {
+            id: 2,
+            question: 'Pada bangunan Kraton Yogyakarta, pertemuan antara tiang kayu tegak lurus dengan balok mendatar membentuk...',
+            options: ['Sudut tumpul', 'Sudut lancip', 'Sudut siku-siku (90°)'],
+            correct: 2,
+            explanation: 'Pertemuan tiang vertikal dan balok horizontal saling tegak lurus membentuk sudut 90° (sudut siku-siku).'
+        },
+        {
+            id: 3,
+            question: 'Alat standar yang digunakan untuk mengukur besar suatu sudut secara tepat adalah...',
+            options: ['Jangka sorong', 'Busur derajat', 'Meteran pita'],
+            correct: 1,
+            explanation: 'Busur derajat (protractor) adalah alat pengukur besar sudut dalam satuan derajat (°).'
+        },
+        {
+            id: 4,
+            question: 'Bentuk bubungan atap joglo atau segitiga gerbang Kraton merupakan contoh benda budaya yang memiliki...',
+            options: ['Sudut lancip', 'Sudut tumpul', 'Sudut lurus'],
+            correct: 0,
+            explanation: 'Kemiringan atap yang meruncing ke atas membentuk sudut lancip kurang dari 90°.'
+        },
+        {
+            id: 5,
+            question: 'Sudut yang ukurannya lebih dari 90° tetapi kurang dari 180° seperti pada bagian bawah ornamen belah ketupat adalah...',
+            options: ['Sudut refleks', 'Sudut tumpul', 'Sudut siku-siku'],
+            correct: 1,
+            explanation: 'Sudut tumpul memiliki rentang ukuran antara 90° sampai 180°.'
+        }
+    ];
+
+    const evaluasiForm = document.getElementById('evaluasiForm');
+    const evaluasiResultCard = document.getElementById('evaluasiResultCard');
+    const scoreNumber = document.getElementById('scoreNumber');
+    const scoreTitle = document.getElementById('scoreTitle');
+    const scoreMessage = document.getElementById('scoreMessage');
+    const reflectionResultBox = document.getElementById('reflectionResultBox');
+    const reflectionResultText = document.getElementById('reflectionResultText');
+    const reviewItemsContainer = document.getElementById('reviewItemsContainer');
+    const retryQuizBtn = document.getElementById('retryQuizBtn');
+
+    if (evaluasiForm) {
+        evaluasiForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const studentName = (document.getElementById('student_name')?.value || 'Siswa Kelas V').trim();
+            const studentClass = (document.getElementById('student_class')?.value || 'V').trim();
+            const refleksi = (document.getElementById('jawaban_refleksi')?.value || '').trim();
+
+            let correctCount = 0;
+            const userAnswers = [];
+
+            evaluasiQuestions.forEach((q, idx) => {
+                const selected = document.querySelector(`input[name="answer_${idx}"]:checked`);
+                const val = selected ? parseInt(selected.value, 10) : -1;
+                userAnswers.push(val);
+                if (val === q.correct) {
+                    correctCount++;
+                }
+            });
+
+            const score = Math.round((correctCount / evaluasiQuestions.length) * 100);
+
+            // Update skor angka
+            if (scoreNumber) scoreNumber.textContent = score;
+
+            // Judul & pesan evaluasi berdasarkan nilai
+            if (scoreTitle && scoreMessage) {
+                if (score >= 80) {
+                    scoreTitle.textContent = `🎉 Luar Biasa, ${studentName}!`;
+                    scoreMessage.textContent = 'Selamat! Kamu telah menguasai materi sudut dan etnomatematika Kraton Yogyakarta dengan sangat baik. Pertahankan prestasimu!';
+                } else if (score >= 60) {
+                    scoreTitle.textContent = `👍 Bagus, ${studentName}!`;
+                    scoreMessage.textContent = 'Kamu sudah memahami dasar-dasar materi sudut, namun masih ada beberapa soal yang perlu kamu cermati lagi.';
+                } else if (score > 0) {
+                    scoreTitle.textContent = `⚠️ Perlu Belajar Lagi, ${studentName}!`;
+                    scoreMessage.textContent = 'Kamu masih keliru pada sebagian besar soal. Yuk amati kembali materi dan penjelasan sudut budaya Kraton di atas, lalu coba lagi!';
+                } else {
+                    scoreTitle.textContent = `❌ Belum Tuntas, ${studentName}!`;
+                    scoreMessage.textContent = 'Kamu belum berhasil menjawab soal dengan benar (Skor 0). Jangan patah semangat, pelajari kembali materi bagian & jenis sudut di atas lalu coba ulangi evaluasi ini ya!';
+                }
+            }
+
+            // Tampilkan refleksi jika diisi
+            if (reflectionResultBox && reflectionResultText) {
+                if (refleksi) {
+                    reflectionResultText.textContent = `"${refleksi}"`;
+                    reflectionResultBox.style.display = 'block';
+                } else {
+                    reflectionResultBox.style.display = 'none';
+                }
+            }
+
+            // Render pembahasan soal
+            if (reviewItemsContainer) {
+                reviewItemsContainer.innerHTML = '';
+                evaluasiQuestions.forEach((q, idx) => {
+                    const userAns = userAnswers[idx];
+                    const isCorrect = (userAns === q.correct);
+
+                    const item = document.createElement('div');
+                    item.className = `review-item ${isCorrect ? '' : 'wrong'}`;
+
+                    const userAnswerText = userAns >= 0 ? q.options[userAns] : 'Tidak dijawab';
+                    const statusColor = isCorrect ? '#2e7d32' : '#c62828';
+                    const statusLabel = isCorrect ? '✔ Jawabanmu Benar' : `✖ Jawabanmu: ${userAnswerText}`;
+
+                    item.innerHTML = `
+                        <strong>Soal ${idx + 1}:</strong> ${q.question}<br>
+                        <span style="font-size: 0.9rem; color: ${statusColor}; font-weight: 600;">
+                            ${statusLabel}
+                        </span><br>
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">
+                            💡 <strong>Kunci Jawaban:</strong> ${q.options[q.correct]} — ${q.explanation}
+                        </span>
+                    `;
+                    reviewItemsContainer.appendChild(item);
+                });
+            }
+
+            // Simpan riwayat di browser (localStorage)
+            try {
+                localStorage.setItem('etno_evaluasi_terakhir', JSON.stringify({
+                    nama: studentName,
+                    kelas: studentClass,
+                    skor: score,
+                    tanggal: new Date().toLocaleString('id-ID')
+                }));
+            } catch (err) {
+                // Abaikan jika localStorage dibatasi browser
+            }
+
+            // Tampilkan kartu hasil dan scroll ke sana
+            if (evaluasiResultCard) {
+                evaluasiResultCard.style.display = 'block';
+                evaluasiResultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
+
+    if (retryQuizBtn) {
+        retryQuizBtn.addEventListener('click', () => {
+            if (evaluasiForm) evaluasiForm.reset();
+            if (evaluasiResultCard) evaluasiResultCard.style.display = 'none';
+            if (evaluasiForm) {
+                evaluasiForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
 });
+
