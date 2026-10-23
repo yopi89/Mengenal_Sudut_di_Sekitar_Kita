@@ -706,51 +706,58 @@ h4 {
 }
 
 .materi-pane-nav .btn-nav-prev {
-    background: var(--bg-card);
-    color: var(--text-main);
+    background: #ffffff;
+    color: var(--text-muted);
     border: 1.5px solid var(--border-light);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .materi-pane-nav .btn-nav-prev:hover {
-    background: #ffffff;
-    border-color: var(--accent-ochre);
-    color: var(--accent-ochre);
+    background: var(--bg-card);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
     transform: translateX(-3px);
 }
 
 .materi-pane-nav .btn-nav-next {
-    background: var(--primary-green);
-    color: #ffffff;
-    border: 1.5px solid var(--primary-green);
+    background: #ffffff;
+    color: var(--primary-color);
+    border: 1.5px solid var(--primary-color);
     margin-left: auto;
-    box-shadow: 0 4px 12px rgba(27, 77, 62, 0.2);
+    box-shadow: 0 2px 10px rgba(30, 58, 138, 0.08);
 }
 
 .materi-pane-nav .btn-nav-next:hover {
-    background: #13382d;
+    background: var(--primary-color);
+    color: #ffffff !important;
     transform: translateX(3px);
-    box-shadow: 0 6px 16px rgba(27, 77, 62, 0.3);
+    box-shadow: 0 6px 18px rgba(30, 58, 138, 0.25);
 }
 
+/* Tombol Terakhir (Aksi Lanjut ke Budaya) */
 .materi-pane-nav .btn-nav-next.cta-highlight {
-    background: #b45309 !important;
-    background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
-    color: #ffffff !important;
-    border: none !important;
-    box-shadow: 0 4px 14px rgba(180, 83, 9, 0.35) !important;
+    background: #ffffff !important;
+    color: #b45309 !important;
+    border: 1.5px solid #d97706 !important;
+    box-shadow: 0 2px 12px rgba(217, 119, 6, 0.12) !important;
 }
 
-.materi-pane-nav .btn-nav-next.cta-highlight,
 .materi-pane-nav .btn-nav-next.cta-highlight span {
-    color: #ffffff !important;
+    color: #b45309 !important;
+    transition: var(--transition);
 }
 
 .materi-pane-nav .btn-nav-next.cta-highlight:hover {
-    background: #92400e !important;
-    background: linear-gradient(135deg, #f59e0b 0%, #92400e 100%) !important;
+    background: #b45309 !important;
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
     color: #ffffff !important;
-    box-shadow: 0 6px 20px rgba(180, 83, 9, 0.45) !important;
+    border-color: #b45309 !important;
+    box-shadow: 0 6px 20px rgba(180, 83, 9, 0.35) !important;
     transform: translateX(3px) !important;
+}
+
+.materi-pane-nav .btn-nav-next.cta-highlight:hover span {
+    color: #ffffff !important;
 }
 
 
