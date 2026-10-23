@@ -2238,3 +2238,432 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+/* ==========================================================================
+   FITUR INTERAKTIF: SOUND TOGGLE, LASER OVERLAY, SERTIFIKAT, & MICRO-INTERACTIONS
+   ========================================================================== */
+
+/* 1. Header Tools & Sound Toggle Button */
+.header-right-tools {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sound-toggle-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-light);
+    background: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+.sound-toggle-btn:hover {
+    border-color: var(--accent-gold);
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2);
+}
+
+.sound-toggle-btn.muted {
+    opacity: 0.55;
+    background: var(--bg-card);
+}
+
+/* 2. Sorot Sudut Geometri (Laser Overlay pada Foto Budaya) */
+.culture-img-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.culture-angle-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 5;
+}
+
+.culture-img-box.laser-active .culture-angle-overlay {
+    opacity: 1;
+}
+
+.laser-arm {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 0 6px currentColor);
+}
+
+.culture-img-box.laser-active .laser-arm {
+    stroke-dashoffset: 0;
+    animation: pulseLaser 2s infinite alternate;
+}
+
+.laser-vertex {
+    filter: drop-shadow(0 0 8px #fbbf24);
+    animation: pulseVertex 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseLaser {
+    0% { filter: drop-shadow(0 0 4px currentColor); stroke-width: 3; }
+    100% { filter: drop-shadow(0 0 10px currentColor); stroke-width: 4.5; }
+}
+
+@keyframes pulseVertex {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.8; }
+}
+
+.btn-toggle-laser {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 6;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    border: 1px solid rgba(251, 191, 36, 0.6);
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-toggle-laser:hover {
+    background: #d97706;
+    border-color: #fbbf24;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(217, 119, 6, 0.4);
+}
+
+.culture-img-box.laser-active .btn-toggle-laser {
+    background: #d97706;
+    border-color: #fbbf24;
+    color: #ffffff;
+}
+
+/* 3. Drag Handle Busur Derajat Virtual */
+#dragHandle {
+    transition: r 0.2s ease, filter 0.2s ease;
+    filter: drop-shadow(0 2px 6px rgba(217, 119, 6, 0.4));
+}
+
+#dragHandle:hover {
+    r: 13;
+    filter: drop-shadow(0 0 10px #fbbf24);
+}
+
+.protractor-canvas-wrap {
+    touch-action: none;
+    user-select: none;
+}
+
+/* 4. Interactive Angle Cards in Tab 2 */
+.angle-type-item {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.angle-type-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.try-simulator-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-pill);
+    transition: var(--transition);
+}
+
+.angle-type-item:hover .try-simulator-pill {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+
+/* 5. Game Combo Badge */
+.combo-badge {
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    color: #ffffff;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
+    animation: comboPulse 0.5s ease;
+}
+
+@keyframes comboPulse {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* 6. Modal Sertifikat Kelulusan Siswa */
+.cert-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.cert-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+}
+
+.cert-container {
+    position: relative;
+    z-index: 10;
+    max-width: 760px;
+    width: 100%;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    padding: 2rem;
+    animation: certPop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes certPop {
+    0% { transform: scale(0.92); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.cert-close-btn {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border-light);
+    background: var(--bg-card);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.cert-close-btn:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+/* Kertas Sertifikat Tradisional Kraton */
+.cert-paper {
+    background: #fdfbf7;
+    border: 3px double #d97706;
+    border-radius: 12px;
+    padding: 2.25rem 2rem;
+    text-align: center;
+    position: relative;
+    background-image: radial-gradient(circle, rgba(217, 119, 6, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.cert-crest {
+    font-size: 2.5rem;
+    color: #d97706;
+    margin-bottom: 0.25rem;
+}
+
+.cert-subtitle {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: #b45309;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.cert-title {
+    font-size: 1.95rem;
+    font-weight: 800;
+    color: #1e3a8a;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+}
+
+.cert-award-to {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.cert-student-name {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    text-decoration: underline;
+    text-decoration-color: #d97706;
+    text-underline-offset: 6px;
+    margin-bottom: 0.35rem;
+}
+
+.cert-student-class {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+}
+
+.cert-divider {
+    color: #d97706;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cert-desc {
+    font-size: 0.92rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    max-width: 580px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.cert-grade-box {
+    display: inline-block;
+    background: #ffffff;
+    border: 2px dashed #d97706;
+    border-radius: var(--radius-md);
+    padding: 0.75rem 2rem;
+    margin-bottom: 1.75rem;
+}
+
+.cert-grade-box span {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+}
+
+.cert-grade-box strong {
+    font-size: 1.75rem;
+    color: #1e3a8a;
+}
+
+.cert-grade-box small {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #15803d;
+    margin-top: 0.2rem;
+}
+
+.cert-footer-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    padding-right: 2rem;
+}
+
+.cert-sign {
+    text-align: center;
+}
+
+.cert-date {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+}
+
+.cert-seal {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #d97706;
+    border: 1.5px solid #d97706;
+    border-radius: var(--radius-pill);
+    padding: 0.2rem 0.85rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+.cert-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Print Rules */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #certificateModal,
+    #certificateModal * {
+        visibility: visible;
+    }
+    #certificateModal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        background: transparent;
+    }
+    .cert-backdrop,
+    .cert-close-btn,
+    .cert-actions {
+        display: none !important;
+    }
+    .cert-container {
+        box-shadow: none;
+        max-width: 100%;
+        padding: 0;
+    }
+    .cert-paper {
+        border: 4px double #000;
+        box-shadow: none;
+    }
+}
