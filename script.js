@@ -69,7 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
     window.openMateriTab = function (tabId) {
         if (detailContainer) {
             detailContainer.classList.add('active');
-            detailContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const headerOffset = 90;
+            const elementPosition = detailContainer.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         }
         tabBtns.forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);

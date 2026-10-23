@@ -675,6 +675,72 @@ h4 {
     animation: fadeIn 0.3s ease;
 }
 
+/* Navigasi Antar Tab Materi (Tombol Selanjutnya / Sebelumnya) */
+.materi-pane-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.25rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--border-light);
+    flex-wrap: wrap;
+}
+
+.materi-pane-nav .btn-nav-prev,
+.materi-pane-nav .btn-nav-next {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.45rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: inherit;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.materi-pane-nav .btn-nav-prev {
+    background: var(--bg-card);
+    color: var(--text-main);
+    border: 1.5px solid var(--border-light);
+}
+
+.materi-pane-nav .btn-nav-prev:hover {
+    background: #ffffff;
+    border-color: var(--accent-ochre);
+    color: var(--accent-ochre);
+    transform: translateX(-3px);
+}
+
+.materi-pane-nav .btn-nav-next {
+    background: var(--primary-green);
+    color: #ffffff;
+    border: 1.5px solid var(--primary-green);
+    margin-left: auto;
+    box-shadow: 0 4px 12px rgba(27, 77, 62, 0.2);
+}
+
+.materi-pane-nav .btn-nav-next:hover {
+    background: #13382d;
+    transform: translateX(3px);
+    box-shadow: 0 6px 16px rgba(27, 77, 62, 0.3);
+}
+
+.materi-pane-nav .btn-nav-next.cta-highlight {
+    background: linear-gradient(135deg, var(--accent-ochre) 0%, #945318 100%);
+    border: none;
+    box-shadow: 0 4px 14px rgba(182, 109, 40, 0.3);
+}
+
+.materi-pane-nav .btn-nav-next.cta-highlight:hover {
+    background: linear-gradient(135deg, #c77b31 0%, #824713 100%);
+    box-shadow: 0 6px 18px rgba(182, 109, 40, 0.4);
+}
+
+
 .angle-types-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

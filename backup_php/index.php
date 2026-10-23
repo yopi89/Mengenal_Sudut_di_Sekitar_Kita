@@ -241,6 +241,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quiz'])) {
                         <li><strong>Daerah Sudut:</strong> Daerah yang dibatasi oleh kedua kaki sudut, diukur dalam satuan <em>derajat (°)</em>.</li>
                     </ul>
                 </div>
+
+                <!-- Tombol Navigasi Tab 1 -->
+                <div class="materi-pane-nav">
+                    <span style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600;">
+                        Bagian 1 dari 4: Dasar Sudut
+                    </span>
+                    <button type="button" class="btn-nav-next" onclick="openMateriTab('tab-jenis')">
+                        Lanjut ke 2. Jenis Sudut →
+                    </button>
+                </div>
             </div>
 
             <!-- Tab 2: Jenis-jenis Sudut -->
@@ -286,6 +296,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quiz'])) {
                         <p style="font-size: 0.9rem; color: var(--text-muted);">Satu putaran penuh kembali ke posisi semula (lingkaran penuh).</p>
                     </div>
                 </div>
+
+                <!-- Tombol Navigasi Tab 2 -->
+                <div class="materi-pane-nav">
+                    <button type="button" class="btn-nav-prev" onclick="openMateriTab('tab-pengertian')">
+                        ← 1. Bagian Sudut
+                    </button>
+                    <button type="button" class="btn-nav-next" onclick="openMateriTab('tab-busur')">
+                        Lanjut ke 3. Cara Mengukur →
+                    </button>
+                </div>
             </div>
 
             <!-- Tab 3: Cara Mengukur Sudut -->
@@ -310,6 +330,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quiz'])) {
                         <p style="font-size: 0.9rem; margin-top: 0.4rem;">Tuliskan besar derajatnya (misal: 45°, 90°, 120°) beserta jenis sudutnya.</p>
                     </div>
                 </div>
+
+                <!-- Tombol Navigasi Tab 3 -->
+                <div class="materi-pane-nav">
+                    <button type="button" class="btn-nav-prev" onclick="openMateriTab('tab-jenis')">
+                        ← 2. Jenis-Jenis Sudut
+                    </button>
+                    <button type="button" class="btn-nav-next" onclick="openMateriTab('tab-soal')">
+                        Lanjut ke 4. Contoh Soal →
+                    </button>
+                </div>
             </div>
 
             <!-- Tab 4: Contoh Soal -->
@@ -321,6 +351,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quiz'])) {
                     <p style="margin-top: 0.6rem; color: var(--primary-green); font-weight: 600;">
                         💡 <strong>Pembahasan:</strong> Karena 65° berada di antara 0° dan 90°, maka sudut tersebut adalah <strong>Sudut Lancip</strong>.
                     </p>
+                </div>
+
+                <!-- Tombol Navigasi Tab 4 -->
+                <div class="materi-pane-nav">
+                    <button type="button" class="btn-nav-prev" onclick="openMateriTab('tab-busur')">
+                        ← 3. Cara Mengukur Sudut
+                    </button>
+                    <a href="#budaya" class="btn-nav-next cta-highlight">
+                        Lanjut ke Jelajah Budaya Kraton ⚜ →
+                    </a>
                 </div>
             </div>
         </div>
