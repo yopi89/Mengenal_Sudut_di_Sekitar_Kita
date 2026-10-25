@@ -2753,3 +2753,37 @@ img {
         display: none;
     }
 }
+
+/* Status Sinkronisasi Rekap Google Sheets */
+.cloud-sync-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.15rem;
+    background: #f1f5f9;
+    border: 1.5px solid #cbd5e1;
+    border-radius: var(--radius-pill);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #475569;
+    margin: 1rem auto 0 auto;
+    transition: var(--transition);
+}
+
+.cloud-sync-status.loading {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1d4ed8;
+}
+
+.cloud-sync-status.success {
+    background: #ecfdf5;
+    border-color: #86efac;
+    color: #15803d;
+}
+
+.cloud-sync-status.error {
+    background: #fef2f2;
+    border-color: #fca5a5;
+    color: #b91c1c;
+}

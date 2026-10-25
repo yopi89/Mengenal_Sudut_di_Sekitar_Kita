@@ -377,6 +377,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
+    // =========================================================================
+    // INTEGRASI GOOGLE SHEETS (REKAP NILAI SISWA KE SPREADSHEET SECARA OTOMATIS)
+    // =========================================================================
+    // Masukkan URL Web App Google Apps Script Anda di sini:
+    const GOOGLE_SHEETS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6L0N8Ygr0vFeD5gQWRLrEPXLU1f3RtxO9tCLidc_S0V9gqJFq8box6ayiKSsdvqh2Jw/exec';
+
     const evaluasiForm = document.getElementById('evaluasiForm');
     const evaluasiResultCard = document.getElementById('evaluasiResultCard');
     const scoreNumber = document.getElementById('scoreNumber');
@@ -386,6 +392,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const reflectionResultText = document.getElementById('reflectionResultText');
     const reviewItemsContainer = document.getElementById('reviewItemsContainer');
     const retryQuizBtn = document.getElementById('retryQuizBtn');
+    const cloudSyncStatus = document.getElementById('cloudSyncStatus');
+    const cloudSyncIcon = document.getElementById('cloudSyncIcon');
+    const cloudSyncText = document.getElementById('cloudSyncText');
 
     if (evaluasiForm) {
         evaluasiForm.addEventListener('submit', (e) => {
@@ -393,6 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const studentName = (document.getElementById('student_name')?.value || 'Siswa Kelas V').trim();
             const studentClass = (document.getElementById('student_class')?.value || 'V').trim();
+            const uraianJawaban = (document.getElementById('jawaban_uraian')?.value || '').trim();
             const refleksi = (document.getElementById('jawaban_refleksi')?.value || '').trim();
 
             let correctCount = 0;
@@ -478,6 +488,53 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Abaikan jika localStorage dibatasi browser
             }
 
+            // Kirim rekap nilai ke Google Sheets (jika URL sudah dipasang)
+            if (GOOGLE_SHEETS_SCRIPT_URL && GOOGLE_SHEETS_SCRIPT_URL.trim() !== '') {
+                if (cloudSyncStatus) {
+                    cloudSyncStatus.style.display = 'inline-flex';
+                    cloudSyncStatus.className = 'cloud-sync-status loading';
+                    if (cloudSyncIcon) cloudSyncIcon.textContent = '⏳';
+                    if (cloudSyncText) cloudSyncText.textContent = 'Menyimpan nilai ke Google Sheets Guru...';
+                }
+
+                const gabunganRefleksi = [
+                    uraianJawaban ? `[Uraian: ${uraianJawaban}]` : '',
+                    refleksi ? `[Refleksi: ${refleksi}]` : ''
+                ].filter(Boolean).join(' ') || '-';
+
+                const payload = {
+                    nama: studentName,
+                    kelas: studentClass,
+                    skor: score,
+                    benar: correctCount,
+                    total: evaluasiQuestions.length,
+                    total_soal: evaluasiQuestions.length,
+                    jawaban_uraian: uraianJawaban,
+                    refleksi: gabunganRefleksi,
+                    timestamp: new Date().toLocaleString('id-ID'),
+                    tanggal: new Date().toLocaleString('id-ID')
+                };
+
+                fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).then(() => {
+                    if (cloudSyncStatus) {
+                        cloudSyncStatus.className = 'cloud-sync-status success';
+                        if (cloudSyncIcon) cloudSyncIcon.textContent = '✅';
+                        if (cloudSyncText) cloudSyncText.textContent = 'Nilai berhasil tersimpan di Google Sheets Guru!';
+                    }
+                }).catch(() => {
+                    if (cloudSyncStatus) {
+                        cloudSyncStatus.className = 'cloud-sync-status error';
+                        if (cloudSyncIcon) cloudSyncIcon.textContent = '⚠️';
+                        if (cloudSyncText) cloudSyncText.textContent = 'Gagal sync ke cloud (tetap tersimpan di perangkat siswa)';
+                    }
+                });
+            }
+
             // Tampilkan kartu hasil dan scroll ke sana
             if (evaluasiResultCard) {
                 evaluasiResultCard.style.display = 'block';
@@ -490,6 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
         retryQuizBtn.addEventListener('click', () => {
             if (evaluasiForm) evaluasiForm.reset();
             if (evaluasiResultCard) evaluasiResultCard.style.display = 'none';
+            if (cloudSyncStatus) cloudSyncStatus.style.display = 'none';
             if (evaluasiForm) {
                 evaluasiForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
