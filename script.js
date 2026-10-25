@@ -374,6 +374,34 @@ document.addEventListener('DOMContentLoaded', () => {
             options: ['Sudut refleks', 'Sudut tumpul', 'Sudut siku-siku'],
             correct: 1,
             explanation: 'Sudut tumpul memiliki rentang ukuran antara 90° sampai 180°.'
+        },
+        {
+            id: 6,
+            question: 'Besar ukuran sudut satu putaran penuh pada sebuah lingkaran adalah...',
+            options: ['90°', '180°', '360°'],
+            correct: 2,
+            explanation: 'Satu putaran penuh lingkaran berukuran 360°, sedangkan setengah putaran berukuran 180°.'
+        },
+        {
+            id: 7,
+            question: 'Sudut yang tepat berukuran 180° sehingga membentuk satu garis lurus datar dinamakan...',
+            options: ['Sudut lurus', 'Sudut siku-siku', 'Sudut tumpul'],
+            correct: 0,
+            explanation: 'Sudut lurus memiliki besar sudut tepat 180° dan membentuk garis lurus mendatar.'
+        },
+        {
+            id: 8,
+            question: 'Jarum jam dinding yang menunjukkan tepat pukul 09.00 membentuk jenis sudut...',
+            options: ['Sudut lancip', 'Sudut siku-siku (90°)', 'Sudut tumpul'],
+            correct: 1,
+            explanation: 'Pada pukul 09.00 atau 03.00, kedua jarum jam saling tegak lurus membentuk sudut 90° (siku-siku).'
+        },
+        {
+            id: 9,
+            question: 'Pada bentuk ornamen Kraton atau kipas tari Jawa yang dibuka lebar hingga 120°, jenis sudut yang terbentuk adalah...',
+            options: ['Sudut lancip', 'Sudut tumpul', 'Sudut siku-siku'],
+            correct: 1,
+            explanation: 'Sudut 120° berada di antara 90° sampai 180°, sehingga dikelompokkan ke dalam jenis sudut tumpul.'
         }
     ];
 
