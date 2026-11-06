@@ -332,8 +332,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 5. Evaluasi Pembelajaran (Client-side / Statis)
-    // Daftar soal: soal biasa dicampur selang-seling dengan soal HOTS
+    // 15 soal pilihan ganda: 10 soal pengetahuan + 5 soal HOTS (berpikir kritis)
     const evaluasiQuestions = [
+        // --- SOAL PENGETAHUAN & PEMAHAMAN ---
         {
             id: 0,
             question: 'Titik pertemuan antara dua garis lurus yang membentuk sebuah sudut dinamakan...',
@@ -344,14 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 1,
-            question: '🔍 [HOTS] Pak Budi ingin memasang pintu geser di rumahnya. Rel pintu terpasang mendatar dan dinding tegak lurus. Sudut antara rel pintu dan dinding yang terbentuk adalah... Dan mengapa hal itu penting dalam pemasangan?',
-            options: ['Sudut lancip, agar pintu miring', 'Sudut siku-siku (90°), agar pintu dapat bergerak lurus tanpa miring', 'Sudut tumpul, agar pintu terbuka lebar'],
-            correct: 1,
-            explanation: 'Sudut siku-siku (90°) memastikan pintu bergerak lurus sejajar lantai. Ini prinsip yang sama dengan pertemuan tiang dan balok di Kraton Yogyakarta.',
-            hots: true
-        },
-        {
-            id: 2,
             question: 'Sudut yang besarnya lebih kecil dari 90° (antara 0° sampai 90°) disebut sudut...',
             options: ['Sudut lancip', 'Sudut siku-siku', 'Sudut tumpul'],
             correct: 0,
@@ -359,15 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hots: false
         },
         {
-            id: 3,
-            question: '🔍 [HOTS] Sebuah atap joglo memiliki kemiringan 40° di sisi kiri dan 40° di sisi kanan. Jika kedua sisi bertemu di puncak atap, berapa besar sudut yang terbentuk di puncak tersebut?',
-            options: ['40°', '80°', '100°'],
-            correct: 2,
-            explanation: '180° − 40° − 40° = 100°. Jumlah sudut dalam segitiga adalah 180°. Sudut puncak atap joglo tersebut termasuk sudut tumpul karena lebih dari 90°.',
-            hots: true
-        },
-        {
-            id: 4,
+            id: 2,
             question: 'Pada bangunan Kraton Yogyakarta, pertemuan antara tiang kayu tegak lurus dengan balok mendatar membentuk...',
             options: ['Sudut tumpul', 'Sudut lancip', 'Sudut siku-siku (90°)'],
             correct: 2,
@@ -375,15 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hots: false
         },
         {
-            id: 5,
-            question: '🔍 [HOTS] Seorang penari Jawa membuka kipasnya. Posisi awal kipas tertutup (0°). Setelah gerakan pertama kipas terbuka 45°, lalu gerakan kedua ditambah 60°. Berapa total sudut kipas sekarang dan termasuk jenis sudut apa?',
-            options: ['95°, sudut tumpul', '105°, sudut tumpul', '115°, sudut tumpul'],
-            correct: 1,
-            explanation: '45° + 60° = 105°. Karena 105° berada di antara 90° dan 180°, maka termasuk sudut tumpul.',
-            hots: true
-        },
-        {
-            id: 6,
+            id: 3,
             question: 'Alat standar yang digunakan untuk mengukur besar suatu sudut secara tepat adalah...',
             options: ['Jangka sorong', 'Busur derajat', 'Meteran pita'],
             correct: 1,
@@ -391,15 +368,15 @@ document.addEventListener('DOMContentLoaded', () => {
             hots: false
         },
         {
-            id: 7,
-            question: '🔍 [HOTS] Di sebuah taman Kraton terdapat jalan setapak yang berbelok. Jika seseorang berjalan lurus kemudian berbelok sehingga arahnya berubah 270°, berarti orang tersebut berbelok sebesar... dan menghadap ke arah apa jika awal menghadap ke Utara?',
-            options: ['270°, menghadap ke Timur', '270°, menghadap ke Barat', '270°, menghadap ke Selatan'],
+            id: 4,
+            question: 'Bentuk bubungan atap joglo atau segitiga gerbang Kraton merupakan contoh benda budaya yang memiliki...',
+            options: ['Sudut lancip', 'Sudut tumpul', 'Sudut lurus'],
             correct: 0,
-            explanation: 'Berputar 270° searah jarum jam dari Utara: Utara→Timur (90°)→Selatan (180°)→Barat (270°)... tunggu. 270° searah jarum jam = Barat. Namun jika berlawanan jarum jam, hasilnya Timur. Jawaban yang tepat di konteks ini adalah Timur (berputar berlawanan jarum jam 270° = searah jarum jam 90°).',
-            hots: true
+            explanation: 'Kemiringan atap yang meruncing ke atas membentuk sudut lancip kurang dari 90°.',
+            hots: false
         },
         {
-            id: 8,
+            id: 5,
             question: 'Sudut yang ukurannya lebih dari 90° tetapi kurang dari 180° seperti pada bagian bawah ornamen belah ketupat adalah...',
             options: ['Sudut refleks', 'Sudut tumpul', 'Sudut siku-siku'],
             correct: 1,
@@ -407,15 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hots: false
         },
         {
-            id: 9,
-            question: '🔍 [HOTS] Motif batik parang memiliki pola diagonal berulang. Jika garis diagonal motif membentuk sudut 55° dengan garis mendatar, maka sudut yang terbentuk di sisi lainnya (sudut pelengkap) adalah berapa? Dan termasuk jenis sudut apa?',
-            options: ['35°, sudut lancip', '125°, sudut tumpul', '145°, sudut tumpul'],
-            correct: 1,
-            explanation: '180° − 55° = 125°. Dua sudut yang saling berpelurus jumlahnya 180°. Sudut 125° termasuk sudut tumpul karena antara 90° dan 180°.',
-            hots: true
-        },
-        {
-            id: 10,
+            id: 6,
             question: 'Besar ukuran sudut satu putaran penuh pada sebuah lingkaran adalah...',
             options: ['90°', '180°', '360°'],
             correct: 2,
@@ -423,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hots: false
         },
         {
-            id: 11,
+            id: 7,
             question: 'Sudut yang tepat berukuran 180° sehingga membentuk satu garis lurus datar dinamakan...',
             options: ['Sudut lurus', 'Sudut siku-siku', 'Sudut tumpul'],
             correct: 0,
@@ -431,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hots: false
         },
         {
-            id: 12,
+            id: 8,
             question: 'Jarum jam dinding yang menunjukkan tepat pukul 09.00 membentuk jenis sudut...',
             options: ['Sudut lancip', 'Sudut siku-siku (90°)', 'Sudut tumpul'],
             correct: 1,
@@ -439,12 +408,54 @@ document.addEventListener('DOMContentLoaded', () => {
             hots: false
         },
         {
-            id: 13,
+            id: 9,
             question: 'Pada bentuk ornamen Kraton atau kipas tari Jawa yang dibuka lebar hingga 120°, jenis sudut yang terbentuk adalah...',
             options: ['Sudut lancip', 'Sudut tumpul', 'Sudut siku-siku'],
             correct: 1,
             explanation: 'Sudut 120° berada di antara 90° sampai 180°, sehingga dikelompokkan ke dalam jenis sudut tumpul.',
             hots: false
+        },
+
+        // --- SOAL HOTS (BERPIKIR KRITIS & MENGANALISIS) ---
+        {
+            id: 10,
+            question: '🔍 [HOTS] Sebuah atap Joglo berbentuk segitiga. Sisi kiri dan sisi kanan atap masing-masing membentuk sudut 40° terhadap garis lantai. Berapakah besar sudut di puncak atap tersebut?',
+            options: ['80°, termasuk sudut lancip', '100°, termasuk sudut tumpul', '120°, termasuk sudut tumpul'],
+            correct: 1,
+            explanation: 'Jumlah sudut dalam segitiga = 180°. Maka sudut puncak = 180° − 40° − 40° = 100°. Karena lebih dari 90°, termasuk sudut tumpul.',
+            hots: true
+        },
+        {
+            id: 11,
+            question: '🔍 [HOTS] Seorang penari Jawa membuka kipasnya secara bertahap. Gerakan pertama membuka 35°, gerakan kedua menambah 55°, gerakan ketiga menambah 20°. Apakah total bukaan kipas itu termasuk sudut lancip, siku-siku, atau tumpul?',
+            options: ['Sudut lancip, karena totalnya 100°', 'Sudut siku-siku, karena totalnya 90°', 'Sudut tumpul, karena totalnya 110°'],
+            correct: 2,
+            explanation: '35° + 55° + 20° = 110°. Karena berada di antara 90° dan 180°, maka termasuk sudut tumpul.',
+            hots: true
+        },
+        {
+            id: 12,
+            question: '🔍 [HOTS] Motif batik Parang memiliki garis diagonal yang membentuk sudut 65° terhadap garis mendatar. Jika kamu membalikkan kain batik tersebut, berapa besar sudut baru yang terbentuk di sisi berlawanannya, dan termasuk jenis sudut apa?',
+            options: ['65°, sudut lancip (sudut tetap sama)', '115°, sudut tumpul (sudut berpelurus)', '125°, sudut tumpul (sudut berkomplemen)'],
+            correct: 1,
+            explanation: 'Sudut yang berpelurus (di sisi yang berlawanan pada garis lurus) = 180° − 65° = 115°. Karena lebih dari 90°, termasuk sudut tumpul.',
+            hots: true
+        },
+        {
+            id: 13,
+            question: '🔍 [HOTS] Pak guru berdiri menghadap ke arah Utara di halaman Kraton. Ia kemudian memutar badannya 90° ke kanan, lalu 45° lagi ke kanan. Ke arah manakah Pak Guru sekarang menghadap?',
+            options: ['Ke arah Timur Laut', 'Ke arah Tenggara', 'Ke arah Selatan'],
+            correct: 1,
+            explanation: '90° ke kanan dari Utara = menghadap Timur. Lalu 45° lagi ke kanan = menghadap Tenggara. Total putaran = 90° + 45° = 135°.',
+            hots: true
+        },
+        {
+            id: 14,
+            question: '🔍 [HOTS] Di sebuah permainan "Detektif Sudut", seorang siswa menemukan 3 benda: sudut lancip 70°, sudut tumpul 110°, dan sudut siku-siku 90°. Jika ketiga sudut ini digabungkan (dijumlahkan), apakah hasilnya sama dengan satu putaran penuh (360°)?',
+            options: ['Ya, 70° + 110° + 90° = 270°, sama dengan putaran penuh', 'Tidak, 70° + 110° + 90° = 270°, kurang 90° dari putaran penuh', 'Tidak, 70° + 110° + 90° = 280°, hampir putaran penuh'],
+            correct: 1,
+            explanation: '70° + 110° + 90° = 270°. Satu putaran penuh = 360°. Jadi masih kurang 360° − 270° = 90° lagi untuk mencapai satu putaran penuh.',
+            hots: true
         }
     ];
 
