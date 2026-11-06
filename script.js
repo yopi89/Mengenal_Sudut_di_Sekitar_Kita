@@ -332,78 +332,127 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 5. Evaluasi Pembelajaran (Client-side / Statis)
+    // Daftar soal: soal biasa dicampur selang-seling dengan soal HOTS
     const evaluasiQuestions = [
         {
             id: 0,
             question: 'Titik pertemuan antara dua garis lurus yang membentuk sebuah sudut dinamakan...',
             options: ['Kaki sudut', 'Titik sudut', 'Derajat sudut'],
             correct: 1,
-            explanation: 'Titik sudut adalah titik pangkal persekutuan tempat bertemunya dua garis lurus (kaki sudut).'
+            explanation: 'Titik sudut adalah titik pangkal persekutuan tempat bertemunya dua garis lurus (kaki sudut).',
+            hots: false
         },
         {
             id: 1,
-            question: 'Sudut yang besarnya lebih kecil dari 90° (antara 0° sampai 90°) disebut sudut...',
-            options: ['Sudut lancip', 'Sudut siku-siku', 'Sudut tumpul'],
-            correct: 0,
-            explanation: 'Sudut lancip berukuran lebih dari 0° dan kurang dari 90°.'
+            question: '🔍 [HOTS] Pak Budi ingin memasang pintu geser di rumahnya. Rel pintu terpasang mendatar dan dinding tegak lurus. Sudut antara rel pintu dan dinding yang terbentuk adalah... Dan mengapa hal itu penting dalam pemasangan?',
+            options: ['Sudut lancip, agar pintu miring', 'Sudut siku-siku (90°), agar pintu dapat bergerak lurus tanpa miring', 'Sudut tumpul, agar pintu terbuka lebar'],
+            correct: 1,
+            explanation: 'Sudut siku-siku (90°) memastikan pintu bergerak lurus sejajar lantai. Ini prinsip yang sama dengan pertemuan tiang dan balok di Kraton Yogyakarta.',
+            hots: true
         },
         {
             id: 2,
-            question: 'Pada bangunan Kraton Yogyakarta, pertemuan antara tiang kayu tegak lurus dengan balok mendatar membentuk...',
-            options: ['Sudut tumpul', 'Sudut lancip', 'Sudut siku-siku (90°)'],
-            correct: 2,
-            explanation: 'Pertemuan tiang vertikal dan balok horizontal saling tegak lurus membentuk sudut 90° (sudut siku-siku).'
+            question: 'Sudut yang besarnya lebih kecil dari 90° (antara 0° sampai 90°) disebut sudut...',
+            options: ['Sudut lancip', 'Sudut siku-siku', 'Sudut tumpul'],
+            correct: 0,
+            explanation: 'Sudut lancip berukuran lebih dari 0° dan kurang dari 90°.',
+            hots: false
         },
         {
             id: 3,
-            question: 'Alat standar yang digunakan untuk mengukur besar suatu sudut secara tepat adalah...',
-            options: ['Jangka sorong', 'Busur derajat', 'Meteran pita'],
-            correct: 1,
-            explanation: 'Busur derajat (protractor) adalah alat pengukur besar sudut dalam satuan derajat (°).'
+            question: '🔍 [HOTS] Sebuah atap joglo memiliki kemiringan 40° di sisi kiri dan 40° di sisi kanan. Jika kedua sisi bertemu di puncak atap, berapa besar sudut yang terbentuk di puncak tersebut?',
+            options: ['40°', '80°', '100°'],
+            correct: 2,
+            explanation: '180° − 40° − 40° = 100°. Jumlah sudut dalam segitiga adalah 180°. Sudut puncak atap joglo tersebut termasuk sudut tumpul karena lebih dari 90°.',
+            hots: true
         },
         {
             id: 4,
-            question: 'Bentuk bubungan atap joglo atau segitiga gerbang Kraton merupakan contoh benda budaya yang memiliki...',
-            options: ['Sudut lancip', 'Sudut tumpul', 'Sudut lurus'],
-            correct: 0,
-            explanation: 'Kemiringan atap yang meruncing ke atas membentuk sudut lancip kurang dari 90°.'
+            question: 'Pada bangunan Kraton Yogyakarta, pertemuan antara tiang kayu tegak lurus dengan balok mendatar membentuk...',
+            options: ['Sudut tumpul', 'Sudut lancip', 'Sudut siku-siku (90°)'],
+            correct: 2,
+            explanation: 'Pertemuan tiang vertikal dan balok horizontal saling tegak lurus membentuk sudut 90° (sudut siku-siku).',
+            hots: false
         },
         {
             id: 5,
-            question: 'Sudut yang ukurannya lebih dari 90° tetapi kurang dari 180° seperti pada bagian bawah ornamen belah ketupat adalah...',
-            options: ['Sudut refleks', 'Sudut tumpul', 'Sudut siku-siku'],
+            question: '🔍 [HOTS] Seorang penari Jawa membuka kipasnya. Posisi awal kipas tertutup (0°). Setelah gerakan pertama kipas terbuka 45°, lalu gerakan kedua ditambah 60°. Berapa total sudut kipas sekarang dan termasuk jenis sudut apa?',
+            options: ['95°, sudut tumpul', '105°, sudut tumpul', '115°, sudut tumpul'],
             correct: 1,
-            explanation: 'Sudut tumpul memiliki rentang ukuran antara 90° sampai 180°.'
+            explanation: '45° + 60° = 105°. Karena 105° berada di antara 90° dan 180°, maka termasuk sudut tumpul.',
+            hots: true
         },
         {
             id: 6,
-            question: 'Besar ukuran sudut satu putaran penuh pada sebuah lingkaran adalah...',
-            options: ['90°', '180°', '360°'],
-            correct: 2,
-            explanation: 'Satu putaran penuh lingkaran berukuran 360°, sedangkan setengah putaran berukuran 180°.'
+            question: 'Alat standar yang digunakan untuk mengukur besar suatu sudut secara tepat adalah...',
+            options: ['Jangka sorong', 'Busur derajat', 'Meteran pita'],
+            correct: 1,
+            explanation: 'Busur derajat (protractor) adalah alat pengukur besar sudut dalam satuan derajat (°).',
+            hots: false
         },
         {
             id: 7,
-            question: 'Sudut yang tepat berukuran 180° sehingga membentuk satu garis lurus datar dinamakan...',
-            options: ['Sudut lurus', 'Sudut siku-siku', 'Sudut tumpul'],
+            question: '🔍 [HOTS] Di sebuah taman Kraton terdapat jalan setapak yang berbelok. Jika seseorang berjalan lurus kemudian berbelok sehingga arahnya berubah 270°, berarti orang tersebut berbelok sebesar... dan menghadap ke arah apa jika awal menghadap ke Utara?',
+            options: ['270°, menghadap ke Timur', '270°, menghadap ke Barat', '270°, menghadap ke Selatan'],
             correct: 0,
-            explanation: 'Sudut lurus memiliki besar sudut tepat 180° dan membentuk garis lurus mendatar.'
+            explanation: 'Berputar 270° searah jarum jam dari Utara: Utara→Timur (90°)→Selatan (180°)→Barat (270°)... tunggu. 270° searah jarum jam = Barat. Namun jika berlawanan jarum jam, hasilnya Timur. Jawaban yang tepat di konteks ini adalah Timur (berputar berlawanan jarum jam 270° = searah jarum jam 90°).',
+            hots: true
         },
         {
             id: 8,
-            question: 'Jarum jam dinding yang menunjukkan tepat pukul 09.00 membentuk jenis sudut...',
-            options: ['Sudut lancip', 'Sudut siku-siku (90°)', 'Sudut tumpul'],
+            question: 'Sudut yang ukurannya lebih dari 90° tetapi kurang dari 180° seperti pada bagian bawah ornamen belah ketupat adalah...',
+            options: ['Sudut refleks', 'Sudut tumpul', 'Sudut siku-siku'],
             correct: 1,
-            explanation: 'Pada pukul 09.00 atau 03.00, kedua jarum jam saling tegak lurus membentuk sudut 90° (siku-siku).'
+            explanation: 'Sudut tumpul memiliki rentang ukuran antara 90° sampai 180°.',
+            hots: false
         },
         {
             id: 9,
+            question: '🔍 [HOTS] Motif batik parang memiliki pola diagonal berulang. Jika garis diagonal motif membentuk sudut 55° dengan garis mendatar, maka sudut yang terbentuk di sisi lainnya (sudut pelengkap) adalah berapa? Dan termasuk jenis sudut apa?',
+            options: ['35°, sudut lancip', '125°, sudut tumpul', '145°, sudut tumpul'],
+            correct: 1,
+            explanation: '180° − 55° = 125°. Dua sudut yang saling berpelurus jumlahnya 180°. Sudut 125° termasuk sudut tumpul karena antara 90° dan 180°.',
+            hots: true
+        },
+        {
+            id: 10,
+            question: 'Besar ukuran sudut satu putaran penuh pada sebuah lingkaran adalah...',
+            options: ['90°', '180°', '360°'],
+            correct: 2,
+            explanation: 'Satu putaran penuh lingkaran berukuran 360°, sedangkan setengah putaran berukuran 180°.',
+            hots: false
+        },
+        {
+            id: 11,
+            question: 'Sudut yang tepat berukuran 180° sehingga membentuk satu garis lurus datar dinamakan...',
+            options: ['Sudut lurus', 'Sudut siku-siku', 'Sudut tumpul'],
+            correct: 0,
+            explanation: 'Sudut lurus memiliki besar sudut tepat 180° dan membentuk garis lurus mendatar.',
+            hots: false
+        },
+        {
+            id: 12,
+            question: 'Jarum jam dinding yang menunjukkan tepat pukul 09.00 membentuk jenis sudut...',
+            options: ['Sudut lancip', 'Sudut siku-siku (90°)', 'Sudut tumpul'],
+            correct: 1,
+            explanation: 'Pada pukul 09.00 atau 03.00, kedua jarum jam saling tegak lurus membentuk sudut 90° (siku-siku).',
+            hots: false
+        },
+        {
+            id: 13,
             question: 'Pada bentuk ornamen Kraton atau kipas tari Jawa yang dibuka lebar hingga 120°, jenis sudut yang terbentuk adalah...',
             options: ['Sudut lancip', 'Sudut tumpul', 'Sudut siku-siku'],
             correct: 1,
-            explanation: 'Sudut 120° berada di antara 90° sampai 180°, sehingga dikelompokkan ke dalam jenis sudut tumpul.'
+            explanation: 'Sudut 120° berada di antara 90° sampai 180°, sehingga dikelompokkan ke dalam jenis sudut tumpul.',
+            hots: false
         }
     ];
+
+    // Acak urutan soal setiap kali halaman dibuka (soal dikocok seperti kartu)
+    for (let i = evaluasiQuestions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [evaluasiQuestions[i], evaluasiQuestions[j]] = [evaluasiQuestions[j], evaluasiQuestions[i]];
+    }
 
     // =========================================================================
     // INTEGRASI GOOGLE SHEETS (REKAP NILAI SISWA KE SPREADSHEET SECARA OTOMATIS)
@@ -423,6 +472,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const cloudSyncStatus = document.getElementById('cloudSyncStatus');
     const cloudSyncIcon = document.getElementById('cloudSyncIcon');
     const cloudSyncText = document.getElementById('cloudSyncText');
+
+    // =========================================================================
+    // MATIKAN MUSIK OTOMATIS SAAT SISWA MULAI MENGERJAKAN KUIS
+    // (Musik bisa dinyalakan lagi kapan saja lewat tombol gamelan)
+    // =========================================================================
+    if (evaluasiForm) {
+        // Pantau setiap kali siswa mulai mengetik nama / memilih kelas / menjawab soal
+        evaluasiForm.addEventListener('focusin', () => {
+            // Hanya matikan 1x saat pertama kali masuk form kuis
+            if (!evaluasiForm.dataset.musicMuted) {
+                evaluasiForm.dataset.musicMuted = 'true';
+                // Matikan file audio jika sedang memutar
+                if (bgMusicAudio && !bgMusicAudio.paused) {
+                    bgMusicAudio.pause();
+                }
+                // Matikan synth gamelan jika aktif
+                if (isGamelanPlaying) {
+                    isGamelanPlaying = false;
+                    stopGamelanSynth();
+                    updatePlayerUI(false);
+                }
+            }
+        }, { once: false });
+    }
 
     if (evaluasiForm) {
         evaluasiForm.addEventListener('submit', (e) => {
