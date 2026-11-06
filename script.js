@@ -454,6 +454,26 @@ document.addEventListener('DOMContentLoaded', () => {
         [evaluasiQuestions[i], evaluasiQuestions[j]] = [evaluasiQuestions[j], evaluasiQuestions[i]];
     }
 
+    // Render soal ke dalam halaman secara otomatis
+    const soalContainer = document.getElementById('soalContainer');
+    if (soalContainer) {
+        soalContainer.innerHTML = evaluasiQuestions.map((q, idx) => `
+            <div class="question-card${q.hots ? ' hots-card' : ''}">
+                <div class="question-header">
+                    <span class="question-number">SOAL ${idx + 1}${q.hots ? ' 🔍 HOTS' : ''}</span>
+                    <h4 class="question-title">${q.question.replace('🔍 [HOTS] ', '')}</h4>
+                </div>
+                <div class="options">
+                    ${q.options.map((opt, oi) => `
+                    <label class="option">
+                        <input type="radio" name="answer_${idx}" value="${oi}"${oi === 0 ? ' required' : ''}>
+                        <span>${opt}</span>
+                    </label>`).join('')}
+                </div>
+            </div>
+        `).join('');
+    }
+
     // =========================================================================
     // INTEGRASI GOOGLE SHEETS (REKAP NILAI SISWA KE SPREADSHEET SECARA OTOMATIS)
     // =========================================================================
