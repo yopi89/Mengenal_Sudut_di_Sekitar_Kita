@@ -419,42 +419,42 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- SOAL HOTS (BERPIKIR KRITIS & MENGANALISIS) ---
         {
             id: 10,
-            question: '🔍 [HOTS] Sebuah atap Joglo berbentuk segitiga. Sisi kiri dan sisi kanan atap masing-masing membentuk sudut 40° terhadap garis lantai. Berapakah besar sudut di puncak atap tersebut?',
-            options: ['80°, termasuk sudut lancip', '100°, termasuk sudut tumpul', '120°, termasuk sudut tumpul'],
+            question: '🔍 [HOTS] Ani membuat bingkai foto berbentuk segitiga dari bambu. Sudut kiri bawah = 50°, sudut kanan bawah = 70°. Ani lupa mengukur sudut paling atas. Tanpa busur derajat, bisakah Ani mengetahui besar sudut atasnya? Berapa besar sudut tersebut dan termasuk jenis apa?',
+            options: ['Tidak bisa diketahui tanpa busur derajat', '60°, sudut lancip — karena 180° − 50° − 70° = 60°', '120°, sudut tumpul — karena 50° + 70° = 120°'],
             correct: 1,
-            explanation: 'Jumlah sudut dalam segitiga = 180°. Maka sudut puncak = 180° − 40° − 40° = 100°. Karena lebih dari 90°, termasuk sudut tumpul.',
+            explanation: 'Bisa! Jumlah ketiga sudut segitiga selalu 180°. Jadi sudut atas = 180° − 50° − 70° = 60°. Karena kurang dari 90°, termasuk sudut lancip. Ini kemampuan penting yang dipakai para pengrajin Kraton zaman dulu!',
             hots: true
         },
         {
             id: 11,
-            question: '🔍 [HOTS] Seorang penari Jawa membuka kipasnya secara bertahap. Gerakan pertama membuka 35°, gerakan kedua menambah 55°, gerakan ketiga menambah 20°. Apakah total bukaan kipas itu termasuk sudut lancip, siku-siku, atau tumpul?',
-            options: ['Sudut lancip, karena totalnya 100°', 'Sudut siku-siku, karena totalnya 90°', 'Sudut tumpul, karena totalnya 110°'],
+            question: '🔍 [HOTS] Di pameran budaya Kraton, ada 4 macam kipas tari. Kipas A terbuka 45°, kipas B terbuka dua kali lipat kipas A, kipas C terbuka setengah dari kipas B, dan kipas D terbuka 30° lebih besar dari kipas C. Kipas manakah yang termasuk sudut siku-siku?',
+            options: ['Kipas A (45°) — sudut siku-siku', 'Kipas C (45°) — sudut siku-siku', 'Kipas B (90°) — sudut siku-siku'],
             correct: 2,
-            explanation: '35° + 55° + 20° = 110°. Karena berada di antara 90° dan 180°, maka termasuk sudut tumpul.',
+            explanation: 'Kipas A = 45°. Kipas B = 45° × 2 = 90° (siku-siku!). Kipas C = 90° ÷ 2 = 45°. Kipas D = 45° + 30° = 75°. Jadi hanya Kipas B yang membentuk sudut siku-siku tepat 90°.',
             hots: true
         },
         {
             id: 12,
-            question: '🔍 [HOTS] Motif batik Parang memiliki garis diagonal yang membentuk sudut 65° terhadap garis mendatar. Jika kamu membalikkan kain batik tersebut, berapa besar sudut baru yang terbentuk di sisi berlawanannya, dan termasuk jenis sudut apa?',
-            options: ['65°, sudut lancip (sudut tetap sama)', '115°, sudut tumpul (sudut berpelurus)', '125°, sudut tumpul (sudut berkomplemen)'],
-            correct: 1,
-            explanation: 'Sudut yang berpelurus (di sisi yang berlawanan pada garis lurus) = 180° − 65° = 115°. Karena lebih dari 90°, termasuk sudut tumpul.',
+            question: '🔍 [HOTS] Pak Dalang mengatur 3 wayang kulit di layar. Wayang pertama berdiri tegak (90° dari lantai). Wayang kedua dimiringkan 25° dari wayang pertama ke kiri. Wayang ketiga dimiringkan 40° dari wayang kedua ke kiri lagi. Berapa sudut wayang ketiga terhadap lantai, dan termasuk jenis sudut apa?',
+            options: ['25°, sudut lancip', '65°, sudut lancip — karena 90° − 25° = 65°, lalu wayang ketiga menjadi 65° − 40° = 25°', '25°, sudut lancip — karena 90° − 25° − 40° = 25°'],
+            correct: 2,
+            explanation: 'Wayang 1 = 90° dari lantai. Dimiringkan 25° ke kiri = 90° − 25° = 65°. Lalu dimiringkan 40° lagi = 65° − 40° = 25° dari lantai. Karena 25° < 90°, termasuk sudut lancip.',
             hots: true
         },
         {
             id: 13,
-            question: '🔍 [HOTS] Pak guru berdiri menghadap ke arah Utara di halaman Kraton. Ia kemudian memutar badannya 90° ke kanan, lalu 45° lagi ke kanan. Ke arah manakah Pak Guru sekarang menghadap?',
-            options: ['Ke arah Timur Laut', 'Ke arah Tenggara', 'Ke arah Selatan'],
+            question: '🔍 [HOTS] Ibu Guru minta siswa menggambar sudut yang berpelurus dengan sudut 73°. Rino menggambar 107°, Sinta menggambar 117°, Dino menggambar 97°. Siapa yang jawabannya BENAR dan mengapa?',
+            options: ['Sinta benar, karena 73° + 117° = 190° mendekati 180°', 'Rino benar, karena dua sudut berpelurus jumlahnya harus tepat 180°, dan 73° + 107° = 180°', 'Dino benar, karena 73° + 97° = 170° paling dekat ke 180°'],
             correct: 1,
-            explanation: '90° ke kanan dari Utara = menghadap Timur. Lalu 45° lagi ke kanan = menghadap Tenggara. Total putaran = 90° + 45° = 135°.',
+            explanation: 'Dua sudut berpelurus adalah dua sudut yang jika digabung membentuk garis lurus = 180°. Jadi pasangan sudut 73° adalah 180° − 73° = 107°. Rino yang benar!',
             hots: true
         },
         {
             id: 14,
-            question: '🔍 [HOTS] Di sebuah permainan "Detektif Sudut", seorang siswa menemukan 3 benda: sudut lancip 70°, sudut tumpul 110°, dan sudut siku-siku 90°. Jika ketiga sudut ini digabungkan (dijumlahkan), apakah hasilnya sama dengan satu putaran penuh (360°)?',
-            options: ['Ya, 70° + 110° + 90° = 270°, sama dengan putaran penuh', 'Tidak, 70° + 110° + 90° = 270°, kurang 90° dari putaran penuh', 'Tidak, 70° + 110° + 90° = 280°, hampir putaran penuh'],
-            correct: 1,
-            explanation: '70° + 110° + 90° = 270°. Satu putaran penuh = 360°. Jadi masih kurang 360° − 270° = 90° lagi untuk mencapai satu putaran penuh.',
+            question: '🔍 [HOTS] Sebuah ornamen Kraton berbentuk persegi panjang. Di dalam persegi panjang itu digambar garis diagonal dari pojok kiri atas ke pojok kanan bawah, sehingga terbentuk 2 segitiga. Jika sudut lancip segitiga atas = 35°, berapakah sudut lancip segitiga bawah yang terbentuk di pojok kanan bawah?',
+            options: ['35°, karena kedua segitiga kembar dan sudutnya sama', '55°, karena 90° − 35° = 55°', '145°, karena 180° − 35° = 145°'],
+            correct: 0,
+            explanation: 'Garis diagonal memotong persegi panjang menjadi 2 segitiga yang identik (kongruen). Sudut yang berhadapan di dua segitiga tersebut besarnya sama. Jadi jika sudut lancip segitiga atas = 35°, maka sudut lancip segitiga bawah di posisi yang sama juga = 35°.',
             hots: true
         }
     ];
